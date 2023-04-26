@@ -1,26 +1,26 @@
 package com.bridgelabz;
+
+import java.util.Optional;
+
 import static com.bridgelabz.FindMaxValueUsingGeneric.findMaxValue;
-/*In this example, the FindMaxValueUsingGeneric class is being used to find
-the maximum value of three generic variables (integers, floats, and strings).
-The testMaximum method is called on each instance of the class, which internally
-calls the findMaxValue static method and returns the maximum value. The System.out.println statements
- print out the maximum value returned by the testMaximum method for each input type.
-* */
+
+// Define the main method to run the program
 public class GenericMain {
-    public static void main(String[] args) {
-        // Create a new instance of the FindMaxValueUsingGeneric class with integer inputs
-        FindMaxValueUsingGeneric<Integer> integerMax = new FindMaxValueUsingGeneric<>(20, 12, 15);
-        // Call the testMaximum method and print out the maximum value
-        System.out.println("The maximum value between the three Integers is : " + integerMax.testMaximum());
+        public static void main(String[] args) {
+                // Call the findMaxValue method for Integers
+                findMaxValue(20, 12, 15);
+                // Call the findMaxValue method for Floats
+                findMaxValue(20.3f, 22.1f, 15.9f);
+                // Call the findMaxValue method for Strings
+                findMaxValue("Apple", "Peach", "Banana");
+                // Call the findMaxValue method with various types and numbers of parameters
+                Optional<Integer> maxInt = findMaxValue(20, 12, 15, 28, 19);
+                Optional<Float> maxFloat = findMaxValue(20.3f, 22.1f, 15.9f, 23.4f);
+                Optional<String> maxString = findMaxValue("Apple", "Peach", "Banana", "Orange", "Grape");
 
-        // Create a new instance of the FindMaxValueUsingGeneric class with float inputs
-        FindMaxValueUsingGeneric<Float> floatMax = new FindMaxValueUsingGeneric<>(20.3f, 22.1f, 15.9f);
-        // Call the testMaximum method and print out the maximum value
-        System.out.println("The maximum value between the three Floats is : " + floatMax.testMaximum());
-
-        // Create a new instance of the FindMaxValueUsingGeneric class with string inputs
-        FindMaxValueUsingGeneric<String> stringMax = new FindMaxValueUsingGeneric<>("Apple", "Peach", "Banana");
-        // Call the testMaximum method and print out the maximum value
-        System.out.println("The maximum value between the three Strings is : " + stringMax.testMaximum());
-    }
+                // Print the results
+                System.out.println("The maximum integer is: " + maxInt.orElse(null));
+                System.out.println("The maximum float is: " + maxFloat.orElse(null));
+                System.out.println("The maximum string is: " + maxString.orElse(null));
+        }
 }

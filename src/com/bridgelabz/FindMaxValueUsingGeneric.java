@@ -1,35 +1,58 @@
 package com.bridgelabz;
-/* Sure! Here's a refactored version of the code to create a generic class that
-takes in three variables of generic type and ensures that the generic type extends Comparable.
-I've also added a parameter constructor and a testMaximum method to internally call the
-static findMaxValue method and return the maximum value of the three variables.
- */
-    // This method takes in three values of type T (which must be comparable),
-    // and returns the maximum value of the three.
-    public class FindMaxValueUsingGeneric<T extends Comparable<T>> {
-        private T a1;
-        private T a2;
-        private T a3;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Comparator;
 
-        // Parameter constructor to initialize the three variables
-        public FindMaxValueUsingGeneric(T a1, T a2, T a3) {
-            this.a1 = a1;
-            this.a2 = a2;
-            this.a3 = a3;
-        }
+// Define a public class named FindMaxValueUsingGenerics
+public class FindMaxValueUsingGeneric {
 
-        // Method to find the maximum value of the three variables
-        public T testMaximum() {
-            return FindMaxValueUsingGeneric.findMaxValue(a1, a2, a3);
-        }
-
-        // Static method to find the maximum value of three generic variables
-        public static <T extends Comparable<T>> T findMaxValue(T a1, T a2, T a3) {
-            T max = a1;
-            if (a2.compareTo(max) > 0)
-                max = a2;
-            if (a3.compareTo(max) > 0)
-                max = a3;
-            return max;
-        }
+    // Define a static method to find the maximum value among three Integers
+    public static void findMaxValue(Integer num1, Integer num2, Integer num3) {
+        // Initialize max to be the first number
+        Integer max = num1;
+        // Check if the second number is greater than max, if so update max
+        if (num2.compareTo(max) > 0)
+            max = num2;
+        // Check if the third number is greater than max, if so update max
+        if (num3.compareTo(max) > 0)
+            max = num3;
+        // Print the maximum value found
+        System.out.println("Maximum of " + num1 + ", " + num2 + ", " + num3 + " is " + max);
     }
+
+    // Define a static method to find the maximum value among three Floats
+    public static void findMaxValue(Float num1, Float num2, Float num3) {
+        // Initialize max to be the first number
+        Float max = num1;
+        // Check if the second number is greater than max, if so update max
+        if (num2.compareTo(max) > 0)
+            max = num2;
+        // Check if the third number is greater than max, if so update max
+        if (num3.compareTo(max) > 0)
+            max = num3;
+        // Print the maximum value found
+        System.out.println("Maximum of " + num1 + ", " + num2 + ", " + num3 + " is " + max);
+    }
+
+    // Define a static method to find the maximum value among three Strings
+    public static void findMaxValue(String str1, String str2, String str3) {
+        // Initialize max to be the first string
+        String max = str1;
+        // Check if the second string comes after max lexicographically, if so update max
+        if (str2.compareTo(max) > 0)
+            max = str2;
+        // Check if the third string comes after max lexicographically, if so update max
+        if (str3.compareTo(max) > 0)
+            max = str3;
+        // Print the maximum value found
+        System.out.println("Maximum of " + str1 + ", " + str2 + ", " + str3 + " is " + max);
+    }
+
+    public static <T extends Comparable<T>> Optional<T> findMaxValue(T... values) {
+        // Sort the values array in descending order using a custom comparator
+        Arrays.sort(values, Comparator.reverseOrder());
+
+        // Return the first value in the sorted array as an Optional
+        return values.length > 0 ? Optional.of(values[0]) : Optional.empty();
+    }
+}
