@@ -1,17 +1,24 @@
 package com.bridgelabz;
-
-import java.util.Scanner;
-
+import static com.bridgelabz.FindMaxValueUsingGeneric.findMaxValue;
+/*In this code, the findMaxValue method is being called with different types
+ of inputs (integers, floats, and strings), but it works for all of them because it uses generics.
+  The <T extends Comparable<T>> syntax allows the method to work with any
+  type T that implements the Comparable interface, which includes all of these types.
+   The System.out.println statements
+ print out the maximum value returned by the findMaxValue method for each input type.
+* */
 public class GenericMain {
      public static void main(String[] args) {
-          //take tree integer from user
-          Scanner input = new Scanner(System.in);
-          System.out.print("Enter three float: ");
-          float num1= input.nextInt();
-          float num2= input.nextInt();
-          float num3 = input.nextInt();
-          // Calling the findMaxValue method with three number
+     // Print out a welcome message.
+        System.out.println("Welcome to Find Maximum Problem Using Generics.");
 
-          FindMaxValueUsingGeneric.findMaxValue(num1,num2,num3);
+     // Call findMaxValue with three integer inputs and print out the maximum value.
+        System.out.println("The maximum value between the three Integers is : "+findMaxValue(20, 12, 15));
+
+     // Call findMaxValue with three float inputs and print out the maximum value.
+        System.out.println("The maximum value between the three Floats is : "+findMaxValue(20.3f, 22.1f, 15.9f));
+
+     // Call findMaxValue with three string inputs and print out the maximum value.
+        System.out.println("The maximum value between the three Strings is : "+findMaxValue("Apple", "Peach", "Banana"));
 }
 }
