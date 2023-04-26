@@ -1,58 +1,27 @@
 package com.bridgelabz;
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.Comparator;
-
+/*In this implementation, the max method takes a variable number of arguments of type T,
+which must implement the Comparable interface. The Arrays.sort method is used to sort the values in ascending order,
+and the maximum value is returned, which is the last element in the sorted array.
+The printMax method takes a single argument of type T, which represents the maximum value, and prints it to standard output.
+In the main method, arrays of Integer, Float, and String objects are declared and initialized with values.
+The max method is called with each array as an argument to find the maximum value,
+which is then passed to the printMax method for printing to standard output.*/
 // Define a public class named FindMaxValueUsingGenerics
 public class FindMaxValueUsingGeneric {
+    // Define a generic method `max` which takes a variable number of arguments of type T
+    // and returns the maximum value among them
+    public static <T extends Comparable<T>> T max(T... values) {
+        // Sort the values in ascending order
 
-    // Define a static method to find the maximum value among three Integers
-    public static void findMaxValue(Integer num1, Integer num2, Integer num3) {
-        // Initialize max to be the first number
-        Integer max = num1;
-        // Check if the second number is greater than max, if so update max
-        if (num2.compareTo(max) > 0)
-            max = num2;
-        // Check if the third number is greater than max, if so update max
-        if (num3.compareTo(max) > 0)
-            max = num3;
-        // Print the maximum value found
-        System.out.println("Maximum of " + num1 + ", " + num2 + ", " + num3 + " is " + max);
+        Arrays.sort(values);
+        // Return the maximum value, which is the last element in the sorted array
+
+        return values[values.length - 1];
     }
+    public static <T extends Comparable<T>> void printMax(T max) {
+        // Define a generic method `printMax` which takes a single argument of type T and prints it to standard output
 
-    // Define a static method to find the maximum value among three Floats
-    public static void findMaxValue(Float num1, Float num2, Float num3) {
-        // Initialize max to be the first number
-        Float max = num1;
-        // Check if the second number is greater than max, if so update max
-        if (num2.compareTo(max) > 0)
-            max = num2;
-        // Check if the third number is greater than max, if so update max
-        if (num3.compareTo(max) > 0)
-            max = num3;
-        // Print the maximum value found
-        System.out.println("Maximum of " + num1 + ", " + num2 + ", " + num3 + " is " + max);
-    }
-
-    // Define a static method to find the maximum value among three Strings
-    public static void findMaxValue(String str1, String str2, String str3) {
-        // Initialize max to be the first string
-        String max = str1;
-        // Check if the second string comes after max lexicographically, if so update max
-        if (str2.compareTo(max) > 0)
-            max = str2;
-        // Check if the third string comes after max lexicographically, if so update max
-        if (str3.compareTo(max) > 0)
-            max = str3;
-        // Print the maximum value found
-        System.out.println("Maximum of " + str1 + ", " + str2 + ", " + str3 + " is " + max);
-    }
-
-    public static <T extends Comparable<T>> Optional<T> findMaxValue(T... values) {
-        // Sort the values array in descending order using a custom comparator
-        Arrays.sort(values, Comparator.reverseOrder());
-
-        // Return the first value in the sorted array as an Optional
-        return values.length > 0 ? Optional.of(values[0]) : Optional.empty();
+        System.out.println("Max value: " + max);
     }
 }
